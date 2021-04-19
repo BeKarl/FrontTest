@@ -1,3 +1,4 @@
+/* tslint:disable:typedef */
 import { Component, OnInit , Input} from '@angular/core';
 import { SharedService } from '../../../shared.service';
 

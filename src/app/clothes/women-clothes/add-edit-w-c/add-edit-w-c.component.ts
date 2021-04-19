@@ -1,5 +1,7 @@
+/* tslint:disable:typedef */
 import { Component, OnInit , Input} from '@angular/core';
 import { SharedService } from '../../../shared.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-edit-w-c',
@@ -51,12 +53,16 @@ export class AddEditWCComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line:typedef
   uploadWomenPhoto(event){
     var file = event.target.files[0];
     const formData: FormData = new FormData();
     formData.append('uploadedFile', file, file.name);
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'multipart/form-data');
+    headers = headers.append('enctype', 'multipart/form-data');
 
-    this.service.UploadMenClothesPhoto(formData).subscribe((data: any) => {
+    this.service.UploadWomenClothesPhoto(formData, {headers}).subscribe((data: any) => {
       this.WomenClothesPhoto = data.toString();
       this.WomenFilePhoto = this.service.PhotoUrl + this.WomenClothesPhoto;
     });

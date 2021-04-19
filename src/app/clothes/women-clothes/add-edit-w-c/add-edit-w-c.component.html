@@ -18,9 +18,9 @@
     <input type="file" (change)="uploadWomenPhoto($event)" class="mt-2"/>
   </div>
 </div>
-<button (click)="addWomenClothes()" *ngIf="womencl.MenClothesID==0" class="btn btn-primary">
+<button (click)="addWomenClothes()" *ngIf="womencl.WomenClothesID==0" class="btn btn-primary">
   Add
 </button>
-<button (click)="updateWomenClothes()" *ngIf="womencl.MenClothesID!=0" class="btn btn-primary">
+<button (click)="updateWomenClothes()" *ngIf="womencl.WomenClothesID!=0" class="btn btn-primary">
   Update
 </button>

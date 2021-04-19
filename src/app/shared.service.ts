@@ -1,6 +1,6 @@
 /* tslint:disable:typedef */
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -25,7 +25,8 @@ export class SharedService {
   deleteMenClothes(val: any){
     return this.http.delete(this.APIUrl + '/menclothes/' + val);
   }
-  UploadMenClothesPhoto(val: any){
+
+  UploadMenClothesPhoto(val: any, p: { headers: HttpHeaders }){
     // @ts-ignore
     return this.http.post(this.APIUrl + '/menclothes/SaveFile' + val);
   }
@@ -42,9 +43,9 @@ export class SharedService {
   deleteWomenClothes(val: any){
     return this.http.delete(this.APIUrl + '/womenclothes/' + val);
   }
-  UploadWomenClothesPhoto(val: any){
+  UploadWomenClothesPhoto(val: any, p: { headers: HttpHeaders }){
     // @ts-ignore
-    return this.http.post(this.APIUrl + '/womenclothes/SaveFile' + val);
+    return this.http.post(this.APIUrl + '/womenclothes/SaveFile' + val + headers);
   }
 
   // Shoes

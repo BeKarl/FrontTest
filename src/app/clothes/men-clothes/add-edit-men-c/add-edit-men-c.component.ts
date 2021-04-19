@@ -1,6 +1,7 @@
 /* tslint:disable:typedef */
 import { Component, OnInit , Input} from '@angular/core';
 import { SharedService } from '../../../shared.service';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-edit-men-c',
@@ -57,8 +58,10 @@ export class AddEditMenCComponent implements OnInit {
     var file = event.target.files[0];
     const formData: FormData = new FormData();
     formData.append('uploadedFile', file, file.name);
+    let headers = new HttpHeaders();
+    headers = headers.append('Content-Type', 'multipart/form-data');
 
-    this.service.UploadMenClothesPhoto(formData).subscribe((data: any) => {
+    this.service.UploadMenClothesPhoto(formData, {headers}).subscribe((data: any) => {
       this.MenClothesPhoto = data.toString();
       this.MenFilePhoto = this.service.PhotoUrl + this.MenClothesPhoto;
     });
